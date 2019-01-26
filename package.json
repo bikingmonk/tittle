@@ -1,6 +1,6 @@
 {
   "name": "tittle",
-  "version": "0.0.0-semantic-release",
+  "version": "0.0.0-semantic",
   "description": "tittle",
   "main": "dist/tittle.js",
   "repository": {
