@@ -15,6 +15,18 @@
 * [Conventional Commits](https://www.conventionalcommits.org/) to enforce [Semantic Versioning](https://semver.org/) specification.
 * Automated releases using Travis CI
 
+# Usage
+
+## Node.js
+```
+let tittle = require("tittle");
+tittle.random();
+```
+
+## CDN links
+* [development](https://unpkg.com/tittle/dist/tittle.js)
+* [production](https://unpkg.com/tittle/dist/tittle.min.js)
+
 ## Sources
 * [countries](https://github.com/mledoze/countries)
 
