@@ -41,9 +41,8 @@
   "scripts": {
     "lint:check": "eslint --print-config . | eslint-config-prettier-check",
     "lint": "eslint .",
-    "test": "jest src",
+    "test": "jest src --coverage",
     "test:watch": "yarn test --watch",
-    "coverage": "yarn test --coverage",
     "commit": "git-cz",
     "clean": "rimraf dist coverage",
     "build:main": "babel src --out-dir dist",
@@ -51,7 +50,7 @@
     "build:umd.min": "webpack --env.mode production",
     "prebuild": "yarn clean",
     "build": "run-p build:*",
-    "validate": "run-p lint test build",
+    "validate": "run-s lint test build",
     "codecov": "codecov",
     "release": "semantic-release"
   },
