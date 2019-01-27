@@ -15,7 +15,9 @@ module.exports = ({ mode } = { mode: "production" }) => {
         extensions: [".js", ".jsx", ".ts", ".tsx"]
       },
       output: {
-        path: outDir
+        path: outDir,
+        libraryTarget: "umd",
+        library: "tittle"
       },
       module: {
         rules: [
