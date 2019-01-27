@@ -1,3 +1,10 @@
 module.exports = () => {
-  return {};
+  return {
+    mode: "production",
+    output: {
+      filename: "tittle.min.js",
+      library: "tittle",
+      libraryTarget: "umd"
+    }
+  };
 };

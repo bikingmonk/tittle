@@ -1,8 +1,8 @@
 {
   "name": "tittle",
-  "version": "0.0.0-semantically-released",
+  "version": "0.0.0-development",
   "description": "tittle",
-  "main": "dist/tittle.js",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/bikingmonk/tittle.git"
@@ -11,16 +11,25 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
+    "@babel/cli": "7.2.3",
+    "@babel/core": "7.2.2",
+    "@babel/preset-env": "7.3.1",
     "@commitlint/cli": "7.3.2",
     "@commitlint/config-conventional": "7.3.1",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "23.6.0",
+    "babel-loader": "8.0.5",
+    "codecov": "3.1.0",
     "commitizen": "3.0.5",
     "commitlint": "7.3.2",
-    "cross-env": "5.2.0",
+    "copy-webpack-plugin": "4.6.0",
     "cz-conventional-changelog": "2.1.0",
     "eslint": "5.12.1",
     "eslint-config-prettier": "4.0.0",
     "eslint-plugin-prettier": "3.0.1",
     "husky": "1.3.1",
+    "jest": "23.6.0",
+    "json-loader": "0.5.7",
     "npm-run-all": "4.1.5",
     "prettier": "1.16.1",
     "rimraf": "2.6.3",
@@ -32,12 +41,19 @@
   "scripts": {
     "lint:check": "eslint --print-config . | eslint-config-prettier-check",
     "lint": "eslint .",
+    "test": "jest src",
+    "test:watch": "yarn test --watch",
+    "coverage": "yarn test --coverage",
     "commit": "git-cz",
-    "clean": "rimraf dist",
+    "clean": "rimraf dist coverage",
+    "build:main": "babel src --out-dir dist",
+    "build:umd": "webpack --env.mode development",
+    "build:umd.min": "webpack --env.mode production",
     "prebuild": "yarn clean",
-    "build": "webpack --env.mode development",
-    "validate": "run-p lint build",
-    "release": "semantic-release --ci false"
+    "build": "run-p build:*",
+    "validate": "run-p lint test build",
+    "codecov": "codecov",
+    "release": "semantic-release"
   },
   "husky": {
     "hooks": {
@@ -53,7 +69,21 @@
   "files": [
     "dist"
   ],
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "ignore": [
+      "**/*.test.js"
+    ]
+  },
+  "jest": {
+    "collectCoverage": true
+  },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "unique-random-array": "1.0.1"
   }
 }
