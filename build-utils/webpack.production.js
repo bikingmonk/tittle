@@ -4,7 +4,7 @@ module.exports = () => {
     output: {
       filename: "tittle.min.js",
       library: "tittle",
-      libraryTarget: "umd"
+      libraryTarget: "window"
     }
   };
 };
